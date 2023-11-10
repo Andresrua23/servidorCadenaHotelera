@@ -1,6 +1,6 @@
-import { modeloReserva } from "../models/modeloReserva"
+import { modeloReserva } from "../models/modeloReserva.js"
 
-class ServicioReserva{
+export class ServicioReserva{
     constructor(){}
 
     async buscarTodas(){
@@ -24,7 +24,7 @@ class ServicioReserva{
     }
 
     async eliminar(id){
-        let reservacion= await modeloreservacion.findByIdAndDelete(id)
+        let reservacion= await modeloReserva.findByIdAndDelete(id)
     }
 
 

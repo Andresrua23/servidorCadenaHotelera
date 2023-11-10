@@ -86,25 +86,35 @@ export class ControladorHabitacion{
             })
         }
     }
-    async eliminar(request,response){
-        try{
-            let servicioHabitacion= new ServicioHabitacion()
-            //1. recibir datos (si)
-            let id=request.params.id
-            //2. eliminelo de la DB
-            //3. responder
-            response.status(200).json({
-                "estado":true,
-                "mensaje":"Se elimino correctamente",
-                "datos":null
-            })
+    
+    async eliminar(request, response) {
+    try {
+        const id = request.params.id;
 
-        }catch(error){
-            response.status(400).json({
-                "estado":false,
-                "mensaje":"Se obtuvo correctamente",
-                "datos":null
-            })
+        // Eliminar la habitación por su ID
+        const habitacionEliminada = await Habitacion.findByIdAndRemove(id);
+
+        if (!habitacionEliminada) {
+            return response.status(404).json({
+                estado: false,
+                mensaje: "Habitación no encontrada",
+                datos: null
+            });
         }
+
+        return response.status(200).json({
+            estado: true,
+            mensaje: "Se eliminó correctamente",
+            datos: habitacionEliminada
+        });
+
+    } catch (error) {
+        console.error(error);
+        response.status(500).json({
+            estado: false,
+            mensaje: "Error al eliminar la habitación",
+            datos: null
+        });
     }
+}
 }

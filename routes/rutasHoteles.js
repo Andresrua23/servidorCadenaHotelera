@@ -19,7 +19,7 @@ rutasApi.put('/api/habitaciones/:id', controladorHabitacion.modificar)
 rutasApi.delete('/api/habitaciones/:id', controladorHabitacion.eliminar)
 
 
-rutasApi.post('/api/reserva', controladorReservas.registrar)
+rutasApi.post('/api/reservas', controladorReservas.registrar)
 rutasApi.get('/api/reservas', controladorReservas.buscarTodas)
 rutasApi.get('/api/reserva/:id', controladorReservas.buscarPorId )
 rutasApi.put('/api/reserva/:id', controladorReservas.modificar)
